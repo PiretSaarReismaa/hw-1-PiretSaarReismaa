@@ -10,6 +10,10 @@ The goal of this homework is to learn using ggplot2, how to map variables to aes
 
 4. Commit **all** your work/files and push completed homework to Github.
 
+-------------------
+
 Tutorial how to get repo/project from Github to your workspace: https://github.com/rstats-tln/fork-and-clone-repo
 
 More resources at https://happygitwithr.com/.
+
+Any issues can be submitted under [Issues](https://github.com/rstats-tln/hw-1-ggplot/issues)

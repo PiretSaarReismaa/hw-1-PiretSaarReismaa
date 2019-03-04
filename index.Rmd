@@ -1,6 +1,6 @@
 ---
 title: "Homework 1: ggplot2"
-author: "Your Name"
+author: "Piret Saar-Reismaa"
 date: "2019-03-04"
 output: github_document
 ---
@@ -15,39 +15,52 @@ library(ggplot2)
 
 By using *mpg* dataset:
 
-1. Map a continuous variable to color, size, and shape. How do these aesthetics behave differently for categorical vs. continuous variables?
+1. Map a continuous variable to color, size, and shape. How do these aesthetics behave differently for categorical vs. continuous variables?f
+
+Some aesthetics work with both, some not, giving different aesthetics to plotted points. 
 
 - Color
 ```{r}
-
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy, color = cty))
+  
 ```
 
 - Size
 ```{r}
-
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy, size = cty))
 ```
 
 - Shape
 ```{r}
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy, shape = class))
 
 ```
-
+Shape can not be mapped to a contiuos variable, it should have categorical values for each to have a certain shape. It will give an Error. 
 
 2. What happens if you map the same variable to multiple aesthetics?
 
 ```{r}
-
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy, color = cty, size = cty))
 ```
-
+Additional aesthetics can be used simultaniously to have one than more effect. 
 
 3. What does the stroke aesthetic do? What shapes does it work with? (Hint: use ?geom_point)
 
 ```{r}
-
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy, shape = class), stroke=1, fill = "red", color = "green" )+
+  scale_shape_manual(values = c(16:19, 21:24))
 ```
+Stroke is used for shapes that have a border that can be colored separately, then stroe is used to modify the border width. 
 
 4. What happens if you map an aesthetic to something other than a variable name, like aes(colour = displ < 5)?
 
 ```{r}
-
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy, color = displ<5))
 ```
+Then it will differante between the given condition, so when displ is under 5 (displ<5) it is true and one color, and if not then a different color. 
